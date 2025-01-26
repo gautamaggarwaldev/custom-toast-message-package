@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Toast from "./Toast Component/Toast";
 import { v4 as uuid } from "uuid";
@@ -5,9 +6,9 @@ import { v4 as uuid } from "uuid";
 const App = () => {
   const [data, setData] = useState({
     message: "",
-    checked: false, // initially unchecked
-    duration: null, // disabled
-    position: "bottom-right", //default position
+    checked: false, // This is check box for auto dismiss ----> initially unchecked
+    duration: null, // disabled if checked false
+    position: "top-center", //default position of toast package
   });
 
   // for toasts list
@@ -27,7 +28,7 @@ const App = () => {
     setData({ ...newData });
   };
 
-  // function to add toast
+  // function to add new toast message
   const addNewToast = (type) => {
     const newData = { ...toastList };
     const currentPostion = data?.position;
@@ -60,16 +61,16 @@ const App = () => {
           );
           return { ...updatedData };
         });
-      }, newToast.duration * 1000);
+      }, newToast.duration * 1000); // in seconds
     }
   };
 
   return (
     <div className="flex items-center justify-center h-screen font-semibold bg-gray-50">
       {/* container for toast card options */}
-      <div className="p-5 space-y-5 text-teal-600 rounded-md shadow-md">
-        <h1 className="text-2xl font-bold text-center ">
-          Custom React Toast Package
+      <div className="p-5 space-y-5 text-rose-600 rounded-md shadow-md">
+        <h1 className="text-4xl font-bold text-center hover:underline cursor-pointer">
+          Toastify JS
         </h1>
 
         {/* for auto dismiss and duration */}
@@ -101,7 +102,7 @@ const App = () => {
               name="duration"
               disabled={!data?.checked}
               defaultValue={!data?.checked ? 1 : null}
-              className=" border-[1.5px] border-teal-600 outline-none p-1 rounded-md"
+              className=" border-[1.5px] border-rose-600 outline-none p-1 rounded-md"
               onChange={(event) => handleChange(event)}
             />
           </div>
@@ -118,7 +119,7 @@ const App = () => {
               placeholder="Data fetched"
               value={data?.message}
               onChange={(event) => handleChange(event)}
-              className="border-[1.5px] border-teal-600 outline-none p-1 rounded-md"
+              className="border-[1.5px] border-rose-600 outline-none p-1 rounded-md"
             />
           </div>
 
@@ -128,7 +129,7 @@ const App = () => {
             <select
               name="position"
               id="position"
-              className="border-[1.5px] border-teal-600 outline-none p-1 rounded-md"
+              className="border-[1.5px] border-rose-600 outline-none p-1 rounded-md"
               onChange={(event) => handleChange(event)}
             >
               <option value="bottom-right">Bottom Right</option>
@@ -144,7 +145,7 @@ const App = () => {
         <footer className="grid grid-cols-2 gap-x-5 gap-y-2">
           {/* success button */}
           <button
-            className="py-2 text-white bg-teal-600 rounded-md hover:bg-teal-700"
+            className="py-2 cursor-pointer hover:animate-wiggle text-white bg-rose-600 rounded-md hover:bg-rose-700"
             onClick={() => addNewToast("success")}
           >
             Success Toast
@@ -152,7 +153,7 @@ const App = () => {
 
           {/* error button */}
           <button
-            className="py-2 text-white bg-teal-600 rounded-md hover:bg-teal-700"
+            className="py-2 cursor-pointer hover:animate-wiggle text-white bg-rose-600 rounded-md hover:bg-rose-700"
             onClick={() => addNewToast("error")}
           >
             Error Toast
@@ -160,7 +161,7 @@ const App = () => {
 
           {/* warning button */}
           <button
-            className="py-2 text-white bg-teal-600 rounded-md hover:bg-teal-700"
+            className="py-2 cursor-pointer hover:animate-wiggle text-white bg-rose-600 rounded-md hover:bg-rose-700"
             onClick={() => addNewToast("warn")}
           >
             Warning Toast
@@ -169,7 +170,7 @@ const App = () => {
       
           {/* clear all button */}
           <button
-            className="py-2 text-white bg-teal-600 rounded-md hover:bg-teal-700"
+            className="py-2 cursor-pointer hover:animate-wiggle text-white bg-rose-600 rounded-md hover:bg-rose-700"
             onClick={() =>
               setToastList({
                 "bottom-right": [],
