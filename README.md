@@ -60,7 +60,7 @@ We welcome contributions! Please see our Contributing Guide for details.
 
 ## Support
 
-- 📧 Email: gautamaggarwaldev@gmail.com
+- 📧 Email: gautam.aggarwal.tech@gmail.com
 - 🖇️ LinkedIn: www.linkedin.com/in/gautam-aggarwal-
 
 ## Authors
